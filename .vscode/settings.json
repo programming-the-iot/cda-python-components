@@ -1,4 +1,29 @@
 {
+    // Per-OS terminal environment. Each block points the integrated terminal at
+    // that platform's own virtual environment and sets PYTHONPATH to the
+    // workspace root and its tests, so the CDA and its tests resolve the same
+    // way regardless of host. POSIX joins paths with ':'; Windows joins with ';'.
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}:${workspaceFolder}/tests",
+        "VIRTUAL_ENV": "${workspaceFolder}/.venv-linux",
+        "PATH": "${workspaceFolder}/.venv-linux/bin:${env:PATH}"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder};${workspaceFolder}/tests",
+        "VIRTUAL_ENV": "${workspaceFolder}\\.venv-win",
+        "PATH": "${workspaceFolder}\\.venv-win\\Scripts;${env:PATH}"
+    },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}:${workspaceFolder}/tests",
+        "VIRTUAL_ENV": "${workspaceFolder}/.venv-macos",
+        "PATH": "${workspaceFolder}/.venv-macos/bin:${env:PATH}"
+    },
+    // Static-analysis import roots for Pylance, kept aligned with the runtime
+    // PYTHONPATH above so editor import resolution matches what runs.
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}",
+        "${workspaceFolder}/tests"
+    ],
     "python.testing.unittestArgs": [
         "-v",
         "-s",
@@ -10,12 +35,8 @@
     ],
     "python.testing.pytestEnabled": false,
     "python.testing.unittestEnabled": true,
-    "python.terminal.activateEnvInCurrentTerminal": true,
-    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
     "python.testing.cwd": "${workspaceFolder}",
-    "python.analysis.extraPaths": [
-        "${workspaceFolder}",
-        "${workspaceFolder}/tests"
-    ],
-    "python.testing.autoTestDiscoverOnSaveEnabled": true
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.terminal.activateEnvironment": true
 }

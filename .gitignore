@@ -1,8 +1,18 @@
 **/*.pyc
 **/cert
 **/cred
+**/.DS_Store
+
+# Virtual environments.
+# Current convention: per-OS environments created in the workspace root, named
+# .venv-linux (Linux or WSL), .venv-macos (macOS), and .venv-win (Windows), so a
+# single checkout on a drive shared between Windows 11 and WSL can hold a
+# distinct venv for each host. The .venv* glob (no trailing slash) ignores that
+# family, and the plain .venv default, both as top-level names and as path
+# prefixes. The remaining entries are legacy environment names, kept ignored for
+# existing local checkouts.
+.venv*
 **/venv
 **/wsl-venv
 **/piot-venv
-.venv
 .winvenv

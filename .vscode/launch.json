@@ -1,13 +1,26 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "debugpy",
-      "request": "launch",
-      "name": "Programming the IoT - CDA Implementation",
-      "program": "./programmingtheiot/cda/app/ConstrainedDeviceApp.py",
-      "console": "integratedTerminal",
-      "justMyCode": false
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Programming the IoT - CDA Implementation",
+            "program": "${workspaceFolder}/programmingtheiot/cda/app/ConstrainedDeviceApp.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "python": "${workspaceFolder}/.venv-linux/bin/python",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}:${workspaceFolder}/tests"
+            },
+            "osx": {
+                "python": "${workspaceFolder}/.venv-macos/bin/python"
+            },
+            "windows": {
+                "python": "${workspaceFolder}/.venv-win/Scripts/python.exe",
+                "env": {
+                    "PYTHONPATH": "${workspaceFolder};${workspaceFolder}/tests"
+                }
+            }
+        }
+    ]
 }
